@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Use modern JS features
+    "module": "ESNext", // Use ES module syntax
+    "declaration": true, // Generate .d.ts files
+    "declarationDir": "./dist", // Output .d.ts files to dist/
+    "outDir": "./dist", // Output compiled JS to dist/
+    "baseUrl": "./src", // Base URL for module resolution
+    "jsx": "react-jsx", // Support React JSX
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["src"], // Include all files in src/
+  "exclude": ["node_modules", "dist"] // Exclude unnecessary files
+}

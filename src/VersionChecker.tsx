@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useRef } from "react";
 
 const useVersionCheck = () => {
-  const lastCheck = useRef(null);
+  const lastCheck = useRef<number>();
   const checkVersion = useCallback(async () => {
     try {
       const currentVersion = window.localStorage.getItem("version");
@@ -48,10 +48,10 @@ const useVersionCheck = () => {
   }, [checkVersion]);
 };
 
-export const VersionCheck = () => {
+export const VersionChecker = () => {
   useVersionCheck();
 
   return null;
 };
 
-export default VersionCheck;
+export default VersionChecker;

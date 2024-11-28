@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 // update version in /public/build-version.json
-const { writeFileSync, existsSync } = require("node:fs");
-const { resolve } = require("path");
+import { writeFileSync, existsSync } from "node:fs";
+import path from "node:path";
 
 // CLI usage help
 function showUsage() {
@@ -11,9 +11,9 @@ function showUsage() {
 }
 
 // Main function
-function updateVersion(dir) {
+function updateVersion(dir: string) {
   // Check if the file path exists
-  const absolutePath = resolve(dir, "build-version.json");
+  const absolutePath = path.resolve(dir, "build-version.json");
 
   if (!existsSync(dir)) {
     console.error(`Error: Directory does not exist: ${dir}`);
@@ -33,7 +33,7 @@ function updateVersion(dir) {
     console.log(`✅ Version file updated at: ${absolutePath}`);
     console.log(`Version: ${version}`);
   } catch (error) {
-    console.error(`Error: Failed to write version file: ${error.message}`);
+    console.error(`Error: Failed to write version file: ${error}`);
     process.exit(1);
   }
 }

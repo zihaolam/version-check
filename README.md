@@ -8,5 +8,13 @@ Add to your app entrypoint
 
 ```
 import { VersionChecker } from '@zihaolam/version-check';
-<VersionChecker />
+
+const App = () => {
+    return (
+        <>
+            <VersionChecker />
+            {* rest of your app *}
+        </>
+    );
+}
 ```

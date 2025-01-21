@@ -5,7 +5,11 @@ const useVersionCheck = () => {
   const checkVersion = useCallback(async () => {
     try {
       const currentVersion = window.localStorage.getItem("version");
-      const data = await (await fetch("/build-version.json")).json();
+      // add timestamp to force cache
+      const timestamp = new Date().getTime();
+      const data = await (
+        await fetch(`/build-version.json?_t=${timestamp}`)
+      ).json();
 
       if (!currentVersion) {
         window.localStorage.setItem("version", data.version);
@@ -14,7 +18,6 @@ const useVersionCheck = () => {
       }
 
       // else if there is a current version, we compare it with the version fetched, then reload if not equal
-      // eslint-disable-next-line eqeqeq
       if (data.version !== currentVersion) {
         window.localStorage.setItem("version", data.version);
         window.location.reload();
